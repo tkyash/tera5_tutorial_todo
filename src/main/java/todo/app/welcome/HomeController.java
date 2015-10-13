@@ -37,7 +37,7 @@ public class HomeController {
 
         return "welcome/home";
 
-        // ほげほげほげブランチコミットテスト
+        //消しました
 
     }
 

@@ -39,8 +39,6 @@ public class HomeController {
 
         return "welcome/home";
 
-        //消しました
-
     }
 
 }

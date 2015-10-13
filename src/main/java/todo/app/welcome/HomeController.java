@@ -36,6 +36,9 @@ public class HomeController {
         model.addAttribute("serverTime", formattedDate);
 
         return "welcome/home";
+
+        //消しました
+
     }
 
 }

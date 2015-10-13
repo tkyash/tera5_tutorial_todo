@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
+<!-- todo-env.xmlには、デプロイする環境によって設定が異なるコンポーネントの設定を行う。 -->
 <beans xmlns="http://www.springframework.org/schema/beans"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="dateFactory" class="org.terasoluna.gfw.common.date.jodatime.DefaultJodaTimeDateFactory" />
+    <bean id="dateFactory"
+        class="org.terasoluna.gfw.common.date.jodatime.DefaultJodaTimeDateFactory" />
 
+
+    <!-- (1) -->
     <bean id="realDataSource" class="org.apache.commons.dbcp2.BasicDataSource"
         destroy-method="close">
         <property name="driverClassName" value="${database.driverClassName}" />
@@ -18,16 +23,16 @@
         <property name="maxWaitMillis" value="${cp.maxWait}" />
     </bean>
 
+
+    <!-- (2) -->
     <bean id="dataSource" class="net.sf.log4jdbc.Log4jdbcProxyDataSource">
         <constructor-arg index="0" ref="realDataSource" />
     </bean>
 
-    <!--  REMOVE THIS LINE IF YOU USE JPA
-    <bean id="transactionManager"
-        class="org.springframework.orm.jpa.JpaTransactionManager">
-        <property name="entityManagerFactory" ref="entityManagerFactory" />
-    </bean>
-          REMOVE THIS LINE IF YOU USE JPA  -->
+    <!-- REMOVE THIS LINE IF YOU USE JPA <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="entityManagerFactory" /> </bean>
+        REMOVE THIS LINE IF YOU USE JPA -->
+    <!-- (3) -->
     <bean id="transactionManager"
         class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="dataSource" />

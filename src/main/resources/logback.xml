@@ -7,6 +7,7 @@
         </encoder>
     </appender>
 
+    <!-- (1) -->
     <appender name="APPLICATION_LOG_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>${app.log.dir:-log}/todo-application.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
@@ -31,12 +32,16 @@
         </encoder>
     </appender>
 
+
     <!-- Application Loggers -->
+    <!-- (2) -->
     <logger name="todo">
         <level value="debug" />
     </logger>
 
+
     <!-- TERASOLUNA -->
+    <!-- (3) -->
     <logger name="org.terasoluna.gfw">
         <level value="info" />
     </logger>

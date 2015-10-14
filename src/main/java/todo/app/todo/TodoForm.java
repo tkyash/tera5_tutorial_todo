@@ -2,19 +2,47 @@ package todo.app.todo;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 public class TodoForm implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+	// 1
+	public static interface TodoCreate {
+	};
 
-    private String todoTitle;
+	public static interface TodoFinish {
+	};
 
-    public String getTodoTitle() {
+	public static interface TodoDelete {
+	};
 
-        return todoTitle;
-    }
+	private static final long serialVersionUID = 1L;
 
-    public void setTodoTitle(String todoTitle) {
+	// 2
+	@NotNull(groups = { TodoFinish.class, TodoDelete.class })
+	private String todoId;
 
-        this.todoTitle = todoTitle;
-    }
+	// 3
+	@NotNull(groups = { TodoCreate.class })
+	@Size(min = 1, max = 30, groups = { TodoCreate.class })
+	private String todoTitle;
+
+	public String getTodoId() {
+		return todoId;
+	}
+
+	public void setTodoId(String todoId) {
+		this.todoId = todoId;
+	}
+
+	public String getTodoTitle() {
+
+		return todoTitle;
+	}
+
+	public void setTodoTitle(String todoTitle) {
+
+		this.todoTitle = todoTitle;
+	}
 }

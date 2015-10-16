@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
+<!-- todo-domain.xmlには、Todoアプリのドメイン層に関わる設定を行う。 -->
 <beans xmlns="http://www.springframework.org/schema/beans"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
     xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
@@ -7,10 +9,14 @@
         http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
         http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 
+
+    <!-- (1) -->
     <import resource="classpath:META-INF/spring/todo-infra.xml" />
 
+    <!-- (2) -->
     <context:component-scan base-package="todo.domain" />
 
+    <!-- @Transactionalアノテーションによるトランザクション管理を有効にする -->
     <tx:annotation-driven />
 
     <!-- AOP. -->

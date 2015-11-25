@@ -9,9 +9,8 @@
         http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 
 
-    <!-- (1)
-    <import resource="classpath:/META-INF/spring/todo-domain.xml" />
--->    <import resource="classpath:/META-INF/spring/todo-domain-test.xml" />
+    <!-- (1) -->
+    <import resource="classpath:/META-INF/spring/todo-domain-test.xml" />
 
     <bean id="passwordEncoder"
         class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
